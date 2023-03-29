@@ -2,9 +2,6 @@ from environment import TouhouEnvironment
 from stable_baselines3 import PPO
 from stable_baselines3.common.env_checker import check_env
 from stable_baselines3.common.vec_env import DummyVecEnv
-from mem_test import print_available_memory
-
-low_mem = False
 
 def main():
     # Initialize the custom environment
@@ -17,8 +14,6 @@ def main():
     
     # Set up the PPO agent
     print("Setting up PPO agent...")
-    if(low_mem):
-        print_available_memory()
     model = PPO("MultiInputPolicy", env, n_steps=256, ent_coef=0.01, learning_rate=2.5e-4, n_epochs=4, clip_range=0.2, verbose=1)
 
     # Train the agent
